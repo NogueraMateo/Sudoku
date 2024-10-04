@@ -1,0 +1,53 @@
+.gameCell {
+    -fx-pref-width: 50;
+    -fx-pref-height: 50;
+    -fx-border-color: #000;
+    -fx-background-color: transparent;
+}
+
+#tf00, #tf32, #tf04{
+    -fx-border-width: 3 0.5 0.5 3;
+}
+
+#tf01, #tf05, #tf33 {
+    -fx-border-width: 0.5 0.5 3 3;
+}
+
+#tf11, #tf15, #tf43{
+    -fx-border-width: 0.5 0.5 3 0.5;
+}
+
+#tf21, #tf25, #tf53 {
+    -fx-border-width: 0.5 3 3 0.5;
+}
+
+#tf20, #tf52, #tf24{
+    -fx-border-width: 3 3 0.5 0.5;
+}
+
+#tf10, #tf14, #tf42 {
+    -fx-border-width: 3 0.5 0.5 0.5;
+}
+
+#helpButton, #restartButton {
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-background-radius: 15;
+    -fx-border-width: 2;
+    -fx-border-color: #000;
+    -fx-border-radius: 15;
+    -fx-font-family: Cambria;
+}
+
+#restartButton {
+    -fx-background-color: #f14d6f;
+}
+
+#helpButton {
+    -fx-background-color: #3c686c;
+}
+
+#restartButton:hover, #helpButton:hover {
+    -fx-opacity: 0.8;
+    -fx-cursor: hand;
+}

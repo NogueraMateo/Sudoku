@@ -1,0 +1,49 @@
+.welcomeCell {
+    -fx-pref-height: 40;
+    -fx-pref-width: 40;
+    -fx-border-color: #000;
+    -fx-background-color: transparent;
+}
+
+#tf00, #tf32, #tf04{
+    -fx-border-width: 3 0.5 0.5 3;
+}
+
+#tf01, #tf05, #tf33 {
+    -fx-border-width: 0.5 0.5 3 3;
+}
+
+#tf11, #tf15, #tf43{
+    -fx-border-width: 0.5 0.5 3 0.5;
+}
+
+#tf21, #tf25, #tf53 {
+    -fx-border-width: 0.5 3 3 0.5;
+}
+
+#tf20, #tf52, #tf24{
+    -fx-border-width: 3 3 0.5 0.5;
+}
+
+#tf10, #tf14, #tf42 {
+    -fx-border-width: 3 0.5 0.5 0.5;
+}
+
+#playButton {
+    -fx-font-family: Cambria;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #fff;
+    -fx-background-color:  #3c686c;
+    -fx-background-radius: 20;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+
+}
+
+#playButton:hover {
+    -fx-opacity: 0.8;
+    -fx-cursor: hand;
+    -fx-scale-x: 1.07;  /* Escala al 120% al pasar el ratón por encima */
+    -fx-scale-y: 1.07;
+}
