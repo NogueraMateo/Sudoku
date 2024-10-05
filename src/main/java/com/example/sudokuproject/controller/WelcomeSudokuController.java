@@ -60,11 +60,6 @@ public class WelcomeSudokuController {
             // Looping over all the children of the GridPane
             for (Node node : this.sudokuContainer.getChildren()) {
 
-                // In case the node has no indexes, continue to the next iteration
-                if (GridPane.getRowIndex(node) == null || GridPane.getColumnIndex(node) == null) {
-                    continue;
-                }
-
                 // The key represents the column and the value the row
                 col = randomCell.getKey();
                 row = randomCell.getValue();

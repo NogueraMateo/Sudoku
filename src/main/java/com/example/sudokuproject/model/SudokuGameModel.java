@@ -1,10 +1,20 @@
 package com.example.sudokuproject.model;
 
-public class SudokuGameModel {
+import java.util.ArrayList;
+
+public class SudokuGameModel extends WelcomeSudokuModel{
 
     public SudokuGameModel() {}
 
     public boolean isValidChar(char letter) {
-        return Character.isDigit(letter);
+        if (Character.isDigit(letter)) {
+            int digit = Character.getNumericValue(letter);
+            return digit >= 1 && digit <= 6;
+        }
+        return false;
+    }
+
+    public boolean isValidNumber(int number, ArrayList<Integer> numbers) {
+        return !numbers.contains(number);
     }
 }

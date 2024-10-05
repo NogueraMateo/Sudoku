@@ -5,6 +5,10 @@
     -fx-background-color: transparent;
 }
 
+.whiteCell {
+    -fx-background-color: #fff;
+}
+
 #tf00, #tf32, #tf04{
     -fx-border-width: 3 0.5 0.5 3;
 }
@@ -50,4 +54,9 @@
 #restartButton:hover, #helpButton:hover {
     -fx-opacity: 0.8;
     -fx-cursor: hand;
+}
+
+.wrongCell {
+    -fx-background-color: #ff908b;
+    -fx-border-color: #ab0700;
 }
