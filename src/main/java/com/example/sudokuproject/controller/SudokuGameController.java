@@ -2,13 +2,14 @@ package com.example.sudokuproject.controller;
 
 import com.example.sudokuproject.model.SudokuGameModel;
 
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
 import javafx.util.Pair;
-
 import java.util.ArrayList;
 
 public class SudokuGameController {
@@ -29,6 +30,7 @@ public class SudokuGameController {
         for (Node node : sudokuGrid.getChildren()) {
             if (node instanceof TextField textField) {
                 textField.addEventFilter(KeyEvent.KEY_TYPED, this::handleKeyTyped);
+                textField.addEventFilter(KeyEvent.KEY_RELEASED, this::handleKeyReleased);
             }
         }
 
@@ -43,28 +45,6 @@ public class SudokuGameController {
         fill2x3Block(3, 5, 2 , 3);
         fill2x3Block(0, 2, 4 , 5);
         fill2x3Block(3, 5, 4 , 5);
-    }
-
-
-    public void setWrongCell(int col, int row) {
-        for (Node node : sudokuGrid.getChildren()) {
-            if (node instanceof TextField textField) {
-                if (GridPane.getColumnIndex(textField).equals(col) && GridPane.getRowIndex(textField).equals(row)) {
-                    textField.getStyleClass().add("wrongCell");
-                }
-            }
-        }
-    }
-
-
-    public void removeWrongCell(int col, int row) {
-        for (Node node : sudokuGrid.getChildren()) {
-            if (node instanceof TextField textField) {
-                if (GridPane.getColumnIndex(textField) == col && GridPane.getRowIndex(textField) == row) {
-                    textField.getStyleClass().remove("wrongCell");
-                }
-            }
-        }
     }
 
 
@@ -89,10 +69,24 @@ public class SudokuGameController {
 
         if (!isValidNumber(incomingNumber, new Pair<>(indexCol, indexRow))) {
             System.out.println("Invalid number");
-            setWrongCell(indexCol, indexRow);
+            textField.getStyleClass().add("wrongCell");
+            startWrongCellTransition(textField);
         } else {
             System.out.println("Took " + incomingNumber + " as a valid number");
-            removeWrongCell(indexCol, indexRow);
+        }
+    }
+
+
+    /**
+     * When a key is released inside a cell I verify whether the text
+     * field is empty. If it is then I remove the "wrongCell" css class
+     * in case it has been set.
+     * @param event: Retrieve the KeyEvent
+     */
+    public void handleKeyReleased(KeyEvent event) {
+        TextField textField = (TextField) event.getSource();
+        if (textField.getText().isEmpty()) {
+            textField.getStyleClass().remove("wrongCell");
         }
     }
 
@@ -218,5 +212,15 @@ public class SudokuGameController {
         }
 
         return numbers;
+    }
+
+
+    public void startWrongCellTransition(TextField textField) {
+        FadeTransition transition = new FadeTransition(Duration.seconds(1), textField);
+        transition.setFromValue(0.3);
+        transition.setToValue(1);
+        transition.setCycleCount(FadeTransition.INDEFINITE);
+        transition.setAutoReverse(true);
+        transition.play();
     }
 }
