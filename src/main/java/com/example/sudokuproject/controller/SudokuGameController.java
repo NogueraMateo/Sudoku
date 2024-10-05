@@ -1,7 +1,7 @@
 package com.example.sudokuproject.controller;
 
 import com.example.sudokuproject.model.SudokuGameModel;
-import javafx.event.Event;
+
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
@@ -9,10 +9,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class SudokuGameController {
 
@@ -35,12 +32,17 @@ public class SudokuGameController {
             }
         }
 
-        this.fill2x3Block(0, 2, 0 , 1);
-        this.fill2x3Block(3, 5, 0 , 1);
-        this.fill2x3Block(0, 2, 2 , 3);
-        this.fill2x3Block(3, 5, 2 , 3);
-        this.fill2x3Block(0, 2, 4 , 5);
-        this.fill2x3Block(3, 5, 4 , 5);
+        generateNewBoard();
+    }
+
+
+    public void generateNewBoard() {
+        fill2x3Block(0, 2, 0 , 1);
+        fill2x3Block(3, 5, 0 , 1);
+        fill2x3Block(0, 2, 2 , 3);
+        fill2x3Block(3, 5, 2 , 3);
+        fill2x3Block(0, 2, 4 , 5);
+        fill2x3Block(3, 5, 4 , 5);
     }
 
 
@@ -84,11 +86,8 @@ public class SudokuGameController {
 
         Integer indexCol = GridPane.getColumnIndex(textField);
         Integer indexRow = GridPane.getRowIndex(textField);
-        ArrayList<Integer> numbersInCol = getNumbersInColumn(indexCol);
-        ArrayList<Integer> numbersInRow = getNumbersInRow(indexRow);
 
-        if (!sudokuModel.isValidNumber(incomingNumber, numbersInCol)
-                || !sudokuModel.isValidNumber(incomingNumber, numbersInRow)) {
+        if (!isValidNumber(incomingNumber, new Pair<>(indexCol, indexRow))) {
             System.out.println("Invalid number");
             setWrongCell(indexCol, indexRow);
         } else {
@@ -101,9 +100,6 @@ public class SudokuGameController {
     public void fill2x3Block(int fromCol, int toCol, int fromRow, int toRow) {
         Pair<Integer, Integer> randomCell;
         int randomNumber;
-        ArrayList<Integer> numbersInRow = new ArrayList<>();
-        ArrayList<Integer> numbersInCol = new ArrayList<>();
-        Set<Integer> numbersInBlock = new HashSet<>();
 
         for (int i = 0; i < 2; ++i) {
 
@@ -112,17 +108,11 @@ public class SudokuGameController {
                 randomCell = this.sudokuModel.getRandomCell(fromCol, toCol, fromRow, toRow);
             } while(!isCellEmpty(randomCell));
 
-            // Gathering the numbers present along the column and row of the random cell
-            numbersInCol = getNumbersInColumn(randomCell.getKey());
-            numbersInRow = getNumbersInRow(randomCell.getValue());
 
             do {
-                randomNumber = sudokuModel.generateNumber(0, 5);
-            } while (!sudokuModel.isValidNumber(randomNumber, numbersInCol)
-                    || !sudokuModel.isValidNumber(randomNumber, numbersInRow)
-                    || numbersInBlock.contains(randomNumber));
+                randomNumber = sudokuModel.generateNumber(1, 6);
+            } while (!isValidNumber(randomNumber, randomCell));
 
-            numbersInBlock.add(randomNumber);
             fillCell(randomCell, randomNumber);
         }
     }
@@ -136,7 +126,6 @@ public class SudokuGameController {
                     textField.setText(String.valueOf(number));
                     textField.setEditable(false);
                 }
-
             }
         }
     }
@@ -193,6 +182,41 @@ public class SudokuGameController {
                 }
             }
         }
+        return numbers;
+    }
+
+    public boolean isValidNumber(
+            int digit,
+            Pair<Integer, Integer> cell) {
+
+        // Gathering the numbers present along the column and row of the random cell
+        ArrayList<Integer> numbersInCol = getNumbersInColumn(cell.getKey());
+        ArrayList<Integer> numbersInRow = getNumbersInRow(cell.getValue());
+
+        int fromCol = (cell.getKey() / 3) * 3;
+        int fromRow = (cell.getValue() / 2) * 2;
+
+        ArrayList<Integer> blockNums = getBlockNumbers(fromCol, fromRow);
+
+        return sudokuModel.isValidNumber(digit, numbersInCol, numbersInRow, blockNums);
+    }
+
+
+    public ArrayList<Integer> getBlockNumbers(int fromCol, int fromRow) {
+        ArrayList<Integer> numbers = new ArrayList<>();
+
+        for (Node node : sudokuGrid.getChildren()) {
+            if (node instanceof TextField textField && !textField.getText().isEmpty()) {
+
+                Integer colIndex = GridPane.getColumnIndex(textField);
+                Integer rowIndex = GridPane.getRowIndex(textField);
+
+                if (colIndex >= fromCol && colIndex <= (fromCol + 2) && rowIndex >= fromRow && rowIndex <= (fromRow + 1)) {
+                    numbers.add(Integer.parseInt(textField.getText()));
+                }
+            }
+        }
+
         return numbers;
     }
 }

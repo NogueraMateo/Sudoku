@@ -14,7 +14,12 @@ public class SudokuGameModel extends WelcomeSudokuModel{
         return false;
     }
 
-    public boolean isValidNumber(int number, ArrayList<Integer> numbers) {
-        return !numbers.contains(number);
+    public boolean isValidNumber(
+            int number,
+            ArrayList<Integer> colNums,
+            ArrayList<Integer> rowNums,
+            ArrayList<Integer> blockNums) {
+
+        return !colNums.contains(number) && !rowNums.contains(number) && !blockNums.contains(number);
     }
 }
