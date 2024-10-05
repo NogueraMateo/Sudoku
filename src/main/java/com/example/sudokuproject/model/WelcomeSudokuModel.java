@@ -4,21 +4,34 @@ import javafx.util.Pair;
 
 import java.util.Random;
 
-public class WelcomeSudokuModel implements NumberGenerator{
+public class WelcomeSudokuModel extends NumberGenerator{
 
-    private Random random;
+    public WelcomeSudokuModel() {}
 
-    public WelcomeSudokuModel() {
-        this.random = new Random();
-    }
-
-    @Override
-    public int generateNumber(int n1, int n2) {
-        return random.nextInt(n2 - n1 + 1) + n1;
-    }
-
+    /**
+     * Generates the indexes of a cell in the sudoku grid, by default
+     * the indexes range from 0 to 5 in both row and column
+     * @return A pair, the key is the column and the value is the row
+     */
     public Pair<Integer, Integer> getRandomCell() {
-       return new Pair<>(this.generateNumber(0, 5), this.generateNumber(0, 5));
+        return getRandomCell(0, 5 ,0, 5);
+    }
+
+    /**
+     * Generates the indexes of a cell in the sudoku grid
+     * @param fromRow first row index
+     * @param toRow last row index
+     * @param fromCol first col index
+     * @param toCol last col index
+     * @return A pair, the key is the column and the value is the row
+     */
+    public Pair<Integer, Integer> getRandomCell(
+            int fromCol,
+            int toCol,
+            int fromRow,
+            int toRow) {
+
+       return new Pair<>(this.generateNumber(fromCol, toCol), this.generateNumber(fromRow, toRow));
     }
 
 

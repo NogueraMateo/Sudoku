@@ -29,10 +29,12 @@ public class SudokuGameView extends Stage {
 
 
     public static SudokuGameView getInstance() throws IOException{
+
         if (SudokuGameViewHolder.INSTANCE == null){
             return SudokuGameViewHolder.INSTANCE = new SudokuGameView();
         } else {
             return SudokuGameViewHolder.INSTANCE;
         }
+
     }
 }
