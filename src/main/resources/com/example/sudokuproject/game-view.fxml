@@ -304,11 +304,15 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="helpButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" text="Need help?" />
+            <Button id="helpButton" fx:id="helpButton" onMouseClicked="#onHelpPressed" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" text="Need help?" />
          </children>
          <padding>
             <Insets left="110.0" right="100.0" />
          </padding>
+      </HBox>
+      <HBox alignment="CENTER">
+         <Label style="-fx-text-fill: #b41c14" text="No suggestions found" visible="false" fx:id="noSuggestionLabel">
+         </Label>
       </HBox>
    </children>
    <padding>

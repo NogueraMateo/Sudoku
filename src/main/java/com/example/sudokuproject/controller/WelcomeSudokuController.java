@@ -120,6 +120,7 @@ public class WelcomeSudokuController {
         scaleTransitionGrow.play();
     }
 
+
     @FXML
     public void onPlayPressed(Event event) throws IOException {
         Node source = (Node) event.getSource();
