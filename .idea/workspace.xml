@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f05ebbdc-8495-45d0-8a3e-2710ae5899aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/TextFieldInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/model/exceptions/NoSuggestionFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/SudokuGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/SudokuGameController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/alerts/ConfirmationAlert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/WelcomeSudokuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/WelcomeSudokuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/model/SudokuGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/model/SudokuGameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/sudokuproject/game-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/sudokuproject/game-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sudokuproject/controller/SudokuGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sudokuproject/controller/SudokuGameController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/sudokuproject/controller/WelcomeSudokuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sudokuproject/controller/WelcomeSudokuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sudokuproject/game-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sudokuproject/game-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sudokuproject/model/SudokuGameModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sudokuproject/model/SudokuGameModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,21 +33,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.WelcomeSudoku.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;3-inform-the-user-about-invalid-cells&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/mateo/Documentos/Sudoku&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.WelcomeSudoku.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "featuser-must-accept-the-start-of-a-new-game",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/mateo/Documentos/Sudoku",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
