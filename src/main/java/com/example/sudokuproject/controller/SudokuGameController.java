@@ -1,5 +1,6 @@
 package com.example.sudokuproject.controller;
 
+import com.example.sudokuproject.controller.alerts.WinnerAlert;
 import com.example.sudokuproject.model.SudokuGameModel;
 
 import com.example.sudokuproject.model.exceptions.NoSuggestionFoundException;
@@ -84,6 +85,10 @@ public class SudokuGameController {
 
 
         randomCell.getCell().setText(String.valueOf(suggestion));
+        if (this.existsWinner()) {
+            WinnerAlert alert = new WinnerAlert("Congratulations, you have won the game!");
+            alert.showAndWait();
+        }
     }
 
 
@@ -94,6 +99,16 @@ public class SudokuGameController {
         fill2x3Block(3, 5, 2 , 3);
         fill2x3Block(0, 2, 4 , 5);
         fill2x3Block(3, 5, 4 , 5);
+    }
+
+
+    public boolean existsWinner() {
+        for (Node node : sudokuGrid.getChildren()) {
+            if (node instanceof TextField textField && textField.getText().isEmpty()) {
+                return false;
+            }
+        }
+        return true;
     }
 
 
@@ -138,6 +153,10 @@ public class SudokuGameController {
         if (textField.getText().isEmpty()) {
             textField.getStyleClass().remove("wrongCell");
             this.stopWrongCellTransition(textField);
+        }
+        if (this.existsWinner()) {
+            WinnerAlert alert = new WinnerAlert("Congratulations, you have won the game!");
+            alert.showAndWait();
         }
     }
 
