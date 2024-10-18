@@ -1,5 +1,6 @@
 package com.example.sudokuproject.controller;
 
+import com.example.sudokuproject.controller.alerts.ConfirmationAlert;
 import com.example.sudokuproject.model.WelcomeSudokuModel;
 import com.example.sudokuproject.view.SudokuGameView;
 import javafx.animation.FadeTransition;
@@ -10,6 +11,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.transform.Scale;
@@ -20,6 +22,7 @@ import javafx.util.Pair;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class WelcomeSudokuController {
 
@@ -123,10 +126,17 @@ public class WelcomeSudokuController {
 
     @FXML
     public void onPlayPressed(Event event) throws IOException {
-        Node source = (Node) event.getSource();
-        Stage actualStage = (Stage) source.getScene().getWindow();
-        actualStage.close();
+        ConfirmationAlert alert = new ConfirmationAlert("Confirm the start of a new game");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            Node source = (Node) event.getSource();
+            Stage actualStage = (Stage) source.getScene().getWindow();
+            actualStage.close();
 
-        SudokuGameView.getInstance();
+            SudokuGameView.getInstance();
+        } else {
+            alert.close();
+        }
+
     }
 }
