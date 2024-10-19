@@ -24,20 +24,44 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * Controller for the Welcome Sudoku view.
+ * This controller handles the animations for the play button and the numbers on the Sudoku grid.
+ * It also manages the start of a new Sudoku game.
+ *
+ * @author Mateo Noguera Pinto
+ */
+
 public class WelcomeSudokuController {
 
+    /**
+     * The Sudoku grid container where the numbers are displayed.
+     */
     @FXML
     private GridPane sudokuContainer;
 
+    /**
+     * The button to start the game.
+     */
     @FXML
     private Button playButton;
 
+    /**
+     * The model used by the controller to generate random cells and numbers.
+     */
     private final WelcomeSudokuModel model;
 
+    /**
+     * Default constructor for the controller. Initializes the model.
+     */
     public WelcomeSudokuController() {
         this.model = new WelcomeSudokuModel();
     }
 
+    /**
+     * Method automatically called by JavaFX on initialization.
+     * It starts the animation for the Sudoku grid and the play button.
+     */
     @FXML
     public void initialize() {
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> {
@@ -50,7 +74,11 @@ public class WelcomeSudokuController {
         this.startPlayButtonAnimation();
     }
 
-
+    /**
+     * Generates an animation for three random cells on the Sudoku grid.
+     * Each cell is assigned a random number between 1 and 6 without repetition.
+     * The selected cell displays the number and applies a fade transition.
+     */
     public void sudokuAnimation() {
         ArrayList<Integer> currentNumbers = new ArrayList<>();
         Pair<Integer, Integer> randomCell;
@@ -89,7 +117,15 @@ public class WelcomeSudokuController {
     };
 
 
-
+    /**
+     * Applies a fade transition to a given text field.
+     *
+     * @param textField The text field where the fade transition is applied.
+     * @param duration  The duration of the transition in seconds.
+     * @param from      The starting opacity value.
+     * @param to        The ending opacity value.
+     * @param delay     The delay before starting the transition in seconds.
+     */
     public void startFadeTransition(
             TextField textField,
             double duration,
@@ -109,7 +145,10 @@ public class WelcomeSudokuController {
         });
     }
 
-
+    /**
+     * Starts a scale animation for the play button.
+     * The button increases in size slightly, and the animation repeats indefinitely.
+     */
     public void startPlayButtonAnimation() {
         ScaleTransition scaleTransitionGrow = new ScaleTransition(Duration.seconds(1), this.playButton);
         scaleTransitionGrow.setFromX(1);
@@ -123,7 +162,13 @@ public class WelcomeSudokuController {
         scaleTransitionGrow.play();
     }
 
-
+    /**
+     * Handles the event when the play button is pressed.
+     * A confirmation alert is displayed, and if confirmed, the current window is closed, and a new Sudoku game is started.
+     *
+     * @param event The event triggered by pressing the play button.
+     * @throws IOException If an error occurs while loading the Sudoku game view.
+     */
     @FXML
     public void onPlayPressed(Event event) throws IOException {
         ConfirmationAlert alert = new ConfirmationAlert("Confirm the start of a new game");

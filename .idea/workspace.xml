@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f05ebbdc-8495-45d0-8a3e-2710ae5899aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/alerts/WinnerAlert.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/sudokuproject/images/trofeo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/SudokuGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/SudokuGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sudokuproject/controller/SudokuGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sudokuproject/controller/SudokuGameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/TextFieldInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/TextFieldInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/WelcomeSudokuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/WelcomeSudokuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/alerts/ConfirmationAlert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/alerts/ConfirmationAlert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/alerts/WinnerAlert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/alerts/WinnerAlert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/model/NumberGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/model/NumberGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/model/SudokuGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/model/SudokuGameModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/model/WelcomeSudokuModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/model/WelcomeSudokuModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/model/exceptions/NoSuggestionFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/model/exceptions/NoSuggestionFoundException.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +44,7 @@
   "keyToString": {
     "Application.WelcomeSudoku.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "inform-the-user-when-he-wins",
+    "git-widget-placeholder": "code-documentation-and-javadoc",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/mateo/Documentos/Sudoku/src/main/resources/com/example/sudokuproject/images",
     "node.js.detected.package.eslint": "true",
