@@ -104,7 +104,7 @@ public class SudokuGameController {
 
     public boolean existsWinner() {
         for (Node node : sudokuGrid.getChildren()) {
-            if (node instanceof TextField textField && textField.getText().isEmpty()) {
+            if (node instanceof TextField textField && (textField.getText().isEmpty() || this.wrongCells.containsKey(textField))) {
                 return false;
             }
         }
