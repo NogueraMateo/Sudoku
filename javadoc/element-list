@@ -1,0 +1,7 @@
+module:com.example.sudokuproject
+com.example.sudokuproject
+com.example.sudokuproject.controller
+com.example.sudokuproject.controller.alerts
+com.example.sudokuproject.model
+com.example.sudokuproject.model.exceptions
+com.example.sudokuproject.view
