@@ -295,15 +295,6 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="70.0" stylesheets="@styles/game.css">
          <children>
-            <Button id="restartButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" text="Restart">
-               <graphic>
-                  <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/restart-arrow.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
             <Button id="helpButton" fx:id="helpButton" onMouseClicked="#onHelpPressed" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" text="Need help?" />
          </children>
          <padding>
