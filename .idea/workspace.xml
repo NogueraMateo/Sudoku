@@ -6,9 +6,81 @@
   <component name="ChangeListManager">
     <list default="true" id="f05ebbdc-8495-45d0-8a3e-2710ae5899aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/WelcomeSudoku.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/controller/SudokuGameController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/controller/TextFieldInfo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/controller/WelcomeSudokuController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/controller/alerts/ConfirmationAlert.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/controller/alerts/WinnerAlert.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/controller/alerts/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/controller/alerts/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/controller/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/controller/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/model/NumberGenerator.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/model/SudokuGameModel.Help.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/model/SudokuGameModel.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/model/WelcomeSudokuModel.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/model/exceptions/NoSuggestionFoundException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/model/exceptions/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/model/exceptions/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/model/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/model/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/view/SudokuGameView.SudokuGameViewHolder.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/view/SudokuGameView.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/view/WelcomeSudokuView.WelcomeSudokuViewHolder.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/view/WelcomeSudokuView.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/view/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/com/example/sudokuproject/view/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/com.example.sudokuproject/module-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-10.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-11.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-12.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-13.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-14.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-15.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-16.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/jquery-ui.overrides.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/legal/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/legal/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/legal/jquery.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/legal/jqueryUI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/module-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/resources/glass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/resources/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/script-dir/jquery-3.6.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/script-dir/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/script-dir/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/serialized-form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/tag-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/type-search-index.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/SudokuGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/SudokuGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/model/SudokuGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/model/SudokuGameModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/sudokuproject/controller/SudokuGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sudokuproject/controller/SudokuGameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sudokuproject/model/SudokuGameModel$Help.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sudokuproject/model/SudokuGameModel$Help.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sudokuproject/model/SudokuGameModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sudokuproject/model/SudokuGameModel.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +109,7 @@
   "keyToString": {
     "Application.WelcomeSudoku.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "implement__a__matrix",
+    "git-widget-placeholder": "fix__boards__with__no__solution",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/mateo/Documentos/Sudoku",
     "node.js.detected.package.eslint": "true",
@@ -73,7 +145,7 @@
       <workItem from="1729270175719" duration="2675000" />
       <workItem from="1729272964623" duration="387000" />
       <workItem from="1729273382361" duration="807000" />
-      <workItem from="1729481909731" duration="4403000" />
+      <workItem from="1729481909731" duration="10431000" />
     </task>
     <servers />
   </component>
