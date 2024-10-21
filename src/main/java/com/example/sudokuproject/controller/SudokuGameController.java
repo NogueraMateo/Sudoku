@@ -11,7 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 import javafx.util.Duration;
 import javafx.util.Pair;
 
@@ -19,7 +18,7 @@ import java.util.*;
 
 /**
  * SudokuGameController is responsible for managing the logic and user interactions
- * in the Sudoku game. It handles the generation of the Sudoku board, user input,
+ * in the Sudoku game. It handles the rendering of the Sudoku board, user input,
  * and validations of the Sudoku grid cells.
  *
  * The controller uses animations to visually indicate invalid inputs, as well as
@@ -30,8 +29,9 @@ import java.util.*;
 public class SudokuGameController {
 
     private final SudokuGameModel sudokuModel;
-    private TextField[][] grid = new TextField[6][6];
+    private TextField[][] gridMatrix = new TextField[6][6];
     private Map<TextField, FadeTransition> wrongCells = new HashMap<>();
+
     @FXML
     private GridPane sudokuGrid;
     @FXML
@@ -57,17 +57,44 @@ public class SudokuGameController {
             }
         }
         orderGrid();
-        generateNewBoard();
+        renderBoard();
     }
 
+    /**
+     * Renders the Sudoku board in the graphical user interface (GUI).
+     * It retrieves the current state of the board from the model and updates the
+     * {@code gridMatrix} with the corresponding numbers. If a cell is empty (value 0),
+     * it sets the text field to be empty and editable. Otherwise, it displays the number
+     * and makes the cell non-editable.
+     */
+    public void renderBoard() {
+        int[][] board = sudokuModel.getBoardToShow();
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                if (board[i][j] == 0) {
+                    gridMatrix[i][j].setText("");
+                    continue;
+                }
+                gridMatrix[i][j].setText(String.valueOf(board[i][j]));
+                gridMatrix[i][j].setEditable(false);
+            }
+        }
+    }
 
+    /**
+     * Orders the grid in the GUI by mapping each {@code TextField} in the
+     * {@code sudokuGrid} to its respective position in the {@code gridMatrix}.
+     * This method retrieves the row and column indices of each text field and
+     * stores them in the corresponding position in the {@code gridMatrix} for
+     * future reference.
+     */
     public void orderGrid() {
         for (Node node : sudokuGrid.getChildren()) {
             if (node instanceof TextField textField) {
                 Integer colIndex = GridPane.getColumnIndex(textField);
                 Integer rowIndex = GridPane.getRowIndex(textField);
 
-                this.grid[rowIndex][colIndex] = textField;
+                this.gridMatrix[rowIndex][colIndex] = textField;
             }
         }
     }
@@ -125,31 +152,28 @@ public class SudokuGameController {
         }
     }
 
-    /**
-     * Generates a new Sudoku board by filling pre-determined 2x3 blocks with random numbers.
-     */
-    public void generateNewBoard() {
-        fill2x3Block(0, 2, 0 , 1);
-        fill2x3Block(3, 5, 0 , 1);
-        fill2x3Block(0, 2, 2 , 3);
-        fill2x3Block(3, 5, 2 , 3);
-        fill2x3Block(0, 2, 4 , 5);
-        fill2x3Block(3, 5, 4 , 5);
-    }
 
     /**
-     * Checks if the player has won the game by verifying that all cells are filled
-     * and that there are no invalid entries.
+     * Checks if the current state of the Sudoku board represents a winning configuration.
+     * It retrieves the current numbers entered by the player in the grid, converts the text
+     * from the {@code gridMatrix} to an integer array representing the board, and checks if
+     * this configuration meets the winning criteria using the model's {@code existsWinner()} method.
      *
-     * @return True if all cells are filled with valid numbers, false otherwise.
+     * @return {@code true} if the current board configuration is a valid solution (i.e., a win), {@code false} otherwise.
      */
     public boolean existsWinner() {
-        for (Node node : sudokuGrid.getChildren()) {
-            if (node instanceof TextField textField && (textField.getText().isEmpty() || this.wrongCells.containsKey(textField))) {
-                return false;
+        int[][] currentBoard = new int[6][6];
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                if (gridMatrix[i][j].getText().isEmpty()) {
+                    currentBoard[i][j] = 0;
+                } else {
+                    currentBoard[i][j] = Integer.parseInt(gridMatrix[i][j].getText());
+                }
             }
         }
-        return true;
+
+        return sudokuModel.existsWinner(currentBoard);
     }
 
 
@@ -202,56 +226,6 @@ public class SudokuGameController {
     }
 
     /**
-     * Fills a 2x3 block of cells within the specified column and row range with random valid numbers.
-     *
-     * @param fromCol The starting column index of the block.
-     * @param toCol The ending column index of the block.
-     * @param fromRow The starting row index of the block.
-     * @param toRow The ending row index of the block.
-     */
-    public void fill2x3Block(int fromCol, int toCol, int fromRow, int toRow) {
-        Pair<Integer, Integer> randomCell;
-        int randomNumber;
-
-        for (int i = 0; i < 2; ++i) {
-
-            // Generates a random cell until the cell is empty
-            do {
-                randomCell = this.sudokuModel.getRandomCell(fromCol, toCol, fromRow, toRow);
-            } while(!isCellEmpty(randomCell));
-
-
-            do {
-                randomNumber = sudokuModel.generateNumber(1, 6);
-            } while (!isValidNumber(randomNumber, randomCell));
-
-            fillCell(randomCell, randomNumber);
-        }
-    }
-
-    /**
-     * Fills the specified cell with the given number and marks the cell as non-editable.
-     *
-     * @param cell The cell represented by a pair of column and row indices.
-     * @param number The number to fill in the cell.
-     */
-    public void fillCell(Pair<Integer, Integer> cell, int number) {
-        TextField field = this.grid[cell.getValue()][cell.getKey()];
-        field.setText(String.valueOf(number));
-        field.setEditable(false);
-    }
-
-    /**
-     * Checks if the specified cell is empty.
-     *
-     * @param cell The cell represented by a pair of column and row indices.
-     * @return True if the cell is empty, false otherwise.
-     */
-    public boolean isCellEmpty(Pair<Integer, Integer> cell) {
-        return this.grid[cell.getValue()][cell.getKey()].getText().isEmpty();
-    }
-
-    /**
      * Retrieves all numbers present in the specified column.
      *
      * @param col The index of the column.
@@ -261,13 +235,14 @@ public class SudokuGameController {
         ArrayList<Integer> numbers = new ArrayList<>();
 
         for (int i = 0; i < 6; ++i) {
-            if (!this.grid[i][col].getText().isEmpty()) {
-                numbers.add(Integer.parseInt(this.grid[i][col].getText()));
+            if (!this.gridMatrix[i][col].getText().isEmpty()) {
+                numbers.add(Integer.parseInt(this.gridMatrix[i][col].getText()));
             }
         }
 
         return numbers;
     }
+
 
     /**
      * Retrieves all numbers present in the specified row.
@@ -279,12 +254,13 @@ public class SudokuGameController {
         ArrayList<Integer> numbers = new ArrayList<>();
 
         for (int i = 0; i < 6; ++i) {
-            if (!this.grid[row][i].getText().isEmpty()) {
-                numbers.add(Integer.parseInt(this.grid[row][i].getText()));
+            if (!this.gridMatrix[row][i].getText().isEmpty()) {
+                numbers.add(Integer.parseInt(this.gridMatrix[row][i].getText()));
             }
         }
         return numbers;
     }
+
 
     /**
      * Validates if the specified number can be placed in the given cell.
@@ -310,6 +286,7 @@ public class SudokuGameController {
         return sudokuModel.isValidNumber(digit, numbersInCol, numbersInRow, blockNums);
     }
 
+
     /**
      * Retrieves all numbers present in the 2x3 block of cells.
      *
@@ -322,8 +299,8 @@ public class SudokuGameController {
 
         for (int i = fromRow; i <= fromRow + 1; ++i) {
             for (int j = fromCol; j <= fromCol + 2; ++j) {
-                if (!this.grid[i][j].getText().isEmpty()) {
-                    numbers.add(Integer.parseInt(this.grid[i][j].getText()));
+                if (!this.gridMatrix[i][j].getText().isEmpty()) {
+                    numbers.add(Integer.parseInt(this.gridMatrix[i][j].getText()));
                 }
 
             }
@@ -331,6 +308,32 @@ public class SudokuGameController {
 
         return numbers;
     }
+
+
+    /**
+     * Retrieves all empty cells in the Sudoku grid.
+     *
+     * @return A list of {@link TextFieldInfo} objects representing the empty cells.
+     */
+    public ArrayList<TextFieldInfo> getEmptyCells() {
+        ArrayList<TextFieldInfo> emptyCells = new ArrayList<>();
+        TextField currentField;
+
+        for (int i = 0; i < 6; ++i) {
+            for (int j = 0; j < 6; ++j) {
+                currentField = this.gridMatrix[i][j];
+                if (currentField.getText().isEmpty()) {
+                    emptyCells.add(new TextFieldInfo(
+                            currentField,
+                            GridPane.getColumnIndex(currentField),
+                            GridPane.getRowIndex(currentField)));
+                }
+            }
+        }
+
+        return emptyCells;
+    }
+
 
     /**
      * Starts a fade transition on a text field, visually indicating that it contains an invalid value.
@@ -352,6 +355,7 @@ public class SudokuGameController {
         this.wrongCells.put(textField, transition);
     }
 
+
     /**
      * Stops the fade transition for the specified text field, removing any visual indication that it contains an invalid value.
      *
@@ -364,29 +368,6 @@ public class SudokuGameController {
         }
     }
 
-    /**
-     * Retrieves all empty cells in the Sudoku grid.
-     *
-     * @return A list of {@link TextFieldInfo} objects representing the empty cells.
-     */
-    public ArrayList<TextFieldInfo> getEmptyCells() {
-        ArrayList<TextFieldInfo> emptyCells = new ArrayList<>();
-        TextField currentField;
-
-        for (int i = 0; i < 6; ++i) {
-            for (int j = 0; j < 6; ++j) {
-                currentField = this.grid[i][j];
-                if (currentField.getText().isEmpty()) {
-                    emptyCells.add(new TextFieldInfo(
-                            currentField,
-                            GridPane.getColumnIndex(currentField),
-                            GridPane.getRowIndex(currentField)));
-                }
-            }
-        }
-
-        return emptyCells;
-    }
 
     /**
      * Applies a fade transition to the specified label, gradually reducing its opacity.
