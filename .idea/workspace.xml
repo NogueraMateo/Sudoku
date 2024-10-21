@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f05ebbdc-8495-45d0-8a3e-2710ae5899aa" name="Changes" comment="" />
+    <list default="true" id="f05ebbdc-8495-45d0-8a3e-2710ae5899aa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/SudokuGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sudokuproject/controller/SudokuGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sudokuproject/controller/SudokuGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sudokuproject/controller/SudokuGameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,9 +37,9 @@
   "keyToString": {
     "Application.WelcomeSudoku.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "implement__a__matrix",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/mateo/Documentos/Sudoku/src/main/resources/com/example/sudokuproject/images",
+    "last_opened_file_path": "/home/mateo/Documentos/Sudoku",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -68,6 +73,7 @@
       <workItem from="1729270175719" duration="2675000" />
       <workItem from="1729272964623" duration="387000" />
       <workItem from="1729273382361" duration="807000" />
+      <workItem from="1729481909731" duration="4403000" />
     </task>
     <servers />
   </component>
