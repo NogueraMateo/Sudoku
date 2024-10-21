@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 import javafx.util.Pair;
 
@@ -29,6 +30,7 @@ import java.util.*;
 public class SudokuGameController {
 
     private final SudokuGameModel sudokuModel;
+    private TextField[][] grid = new TextField[6][6];
     private Map<TextField, FadeTransition> wrongCells = new HashMap<>();
     @FXML
     private GridPane sudokuGrid;
@@ -54,9 +56,22 @@ public class SudokuGameController {
                 textField.addEventFilter(KeyEvent.KEY_RELEASED, this::handleKeyReleased);
             }
         }
-
+        orderGrid();
         generateNewBoard();
     }
+
+
+    public void orderGrid() {
+        for (Node node : sudokuGrid.getChildren()) {
+            if (node instanceof TextField textField) {
+                Integer colIndex = GridPane.getColumnIndex(textField);
+                Integer rowIndex = GridPane.getRowIndex(textField);
+
+                this.grid[rowIndex][colIndex] = textField;
+            }
+        }
+    }
+
 
     /**
      * Handles the event when the help button is pressed. This method finds an empty
@@ -221,15 +236,9 @@ public class SudokuGameController {
      * @param number The number to fill in the cell.
      */
     public void fillCell(Pair<Integer, Integer> cell, int number) {
-        for (Node node : sudokuGrid.getChildren()) {
-            if (node instanceof TextField textField) {
-                if (GridPane.getColumnIndex(textField).equals(cell.getKey()) &&
-                        GridPane.getRowIndex(textField).equals(cell.getValue())) {
-                    textField.setText(String.valueOf(number));
-                    textField.setEditable(false);
-                }
-            }
-        }
+        TextField field = this.grid[cell.getValue()][cell.getKey()];
+        field.setText(String.valueOf(number));
+        field.setEditable(false);
     }
 
     /**
@@ -239,23 +248,7 @@ public class SudokuGameController {
      * @return True if the cell is empty, false otherwise.
      */
     public boolean isCellEmpty(Pair<Integer, Integer> cell) {
-
-        Integer colIndex, rowIndex;
-
-        for (Node node : sudokuGrid.getChildren()) {
-
-            if (node instanceof TextField textField) {
-
-                colIndex = GridPane.getColumnIndex(node);
-                rowIndex = GridPane.getRowIndex(node);
-
-                if (colIndex.equals(cell.getKey()) && rowIndex.equals(cell.getValue())) {
-                    return textField.getText().isEmpty();
-                }
-
-            }
-        }
-        return false;
+        return this.grid[cell.getValue()][cell.getKey()].getText().isEmpty();
     }
 
     /**
@@ -266,17 +259,13 @@ public class SudokuGameController {
      */
     public ArrayList<Integer> getNumbersInColumn(int col) {
         ArrayList<Integer> numbers = new ArrayList<>();
-        Integer colIndex;
 
-        for (Node node : sudokuGrid.getChildren()) {
-            if (node instanceof TextField textField) {
-                colIndex = GridPane.getColumnIndex(textField);
-
-                if (colIndex.equals(col) && !textField.getText().isEmpty()) {
-                    numbers.add(Integer.parseInt(textField.getText()));
-                }
+        for (int i = 0; i < 6; ++i) {
+            if (!this.grid[i][col].getText().isEmpty()) {
+                numbers.add(Integer.parseInt(this.grid[i][col].getText()));
             }
         }
+
         return numbers;
     }
 
@@ -288,15 +277,10 @@ public class SudokuGameController {
      */
     public ArrayList<Integer> getNumbersInRow(int row) {
         ArrayList<Integer> numbers = new ArrayList<>();
-        Integer rowIndex;
 
-        for (Node node : sudokuGrid.getChildren()) {
-            if (node instanceof TextField textField) {
-                rowIndex = GridPane.getRowIndex(textField);
-
-                if (rowIndex.equals(row) && !textField.getText().isEmpty()) {
-                    numbers.add(Integer.parseInt(textField.getText()));
-                }
+        for (int i = 0; i < 6; ++i) {
+            if (!this.grid[row][i].getText().isEmpty()) {
+                numbers.add(Integer.parseInt(this.grid[row][i].getText()));
             }
         }
         return numbers;
@@ -336,15 +320,12 @@ public class SudokuGameController {
     public ArrayList<Integer> getBlockNumbers(int fromCol, int fromRow) {
         ArrayList<Integer> numbers = new ArrayList<>();
 
-        for (Node node : sudokuGrid.getChildren()) {
-            if (node instanceof TextField textField && !textField.getText().isEmpty()) {
-
-                Integer colIndex = GridPane.getColumnIndex(textField);
-                Integer rowIndex = GridPane.getRowIndex(textField);
-
-                if (colIndex >= fromCol && colIndex <= (fromCol + 2) && rowIndex >= fromRow && rowIndex <= (fromRow + 1)) {
-                    numbers.add(Integer.parseInt(textField.getText()));
+        for (int i = fromRow; i <= fromRow + 1; ++i) {
+            for (int j = fromCol; j <= fromCol + 2; ++j) {
+                if (!this.grid[i][j].getText().isEmpty()) {
+                    numbers.add(Integer.parseInt(this.grid[i][j].getText()));
                 }
+
             }
         }
 
@@ -390,17 +371,20 @@ public class SudokuGameController {
      */
     public ArrayList<TextFieldInfo> getEmptyCells() {
         ArrayList<TextFieldInfo> emptyCells = new ArrayList<>();
+        TextField currentField;
 
-        for (Node node : sudokuGrid.getChildren()) {
-            if (node instanceof TextField textField && textField.getText().isEmpty()) {
-
-                emptyCells.add(new TextFieldInfo(
-                        textField,
-                        GridPane.getColumnIndex(textField),
-                        GridPane.getRowIndex(textField)));
-
+        for (int i = 0; i < 6; ++i) {
+            for (int j = 0; j < 6; ++j) {
+                currentField = this.grid[i][j];
+                if (currentField.getText().isEmpty()) {
+                    emptyCells.add(new TextFieldInfo(
+                            currentField,
+                            GridPane.getColumnIndex(currentField),
+                            GridPane.getRowIndex(currentField)));
+                }
             }
         }
+
         return emptyCells;
     }
 
